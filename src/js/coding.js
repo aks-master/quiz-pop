@@ -1,5 +1,5 @@
 import data from "./dataset.json";
-const questions = data.music;
+const questions = data.coding;
 console.log(questions);
 
 //get elements

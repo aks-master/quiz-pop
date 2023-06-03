@@ -1,5 +1,5 @@
 import data from "./dataset.json";
-const questions = data.music;
+const questions = data["modern-art"];
 console.log(questions);
 
 //get elements
@@ -23,7 +23,7 @@ let questionCompletedYet = 0; //counter to check how many question are done.
 function prev() {
   i = i - 1;
   if (i <= 0) i = 0; //prevent underflow
-  question.innerText = `Q.${i+1} ${questions[i].question}`
+  question.innerText = `Q.${i+1} ${questions[i].question}`;
   optionA.innerText = questions[i].options[0];
   optionB.innerText = questions[i].options[1];
   optionC.innerText = questions[i].options[2];
@@ -31,8 +31,15 @@ function prev() {
 }
 function next() {
   i = i + 1;
-  if (i >= 9) i = 9; //prevent overflow
-  question.innerText = `Q.${i+1} ${questions[i].question}`
+  if (i >= 9) {
+    //logic to show score
+    if(questionCompletedYet==10){
+        // showScore()
+    } else{
+        i=9; //do nothing
+    }
+  }
+  question.innerText = `Q.${i+1} ${questions[i].question}`;
   optionA.innerText = questions[i].options[0];
   optionB.innerText = questions[i].options[1];
   optionC.innerText = questions[i].options[2];
