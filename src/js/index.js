@@ -1,18 +1,36 @@
-// The following code starts Mock Service Worker tool which allows you to simulate a backend (an API) for building your apps that talk to a remote service. You can visit https://mswjs.io for details on this utility and check src/api/routes.js for a sample API route that you can edit/create as needed to simulate a real world API. This simulated backend will not be part of the completed application (built edition) and you must use a real world backend built using Node.js + Express or Java + Spring Boot to provide such a service.
+//get buttons
+const musicButton=document.getElementById("musicButton");
+const modernArtButton=document.getElementById("modernArtButton");
+const codingButton=document.getElementById("codingButton");
 
-// If you do not require a simulated backend, you can remove the code shown below.
-
-const apiStatus = document.querySelector('#api-status');
-
-if (import.meta.env.DEV) {
-  import('../api/browser')
-    .then(({ worker }) => worker.start())
-    .then(() => fetch('/'))
-    .then((res) => res.json())
-    .then((res) => (apiStatus.innerText = res.message));
+function redicrectToMusicQuiz(){
+    window.location.href="musicQuiz.html";
+}
+function redicrectToModernArtQuiz(){
+    window.location.href="modernArtQuiz.html";
+}
+function redicrectToCodingQuiz(){
+    window.location.href="codingQuiz.html";
 }
 
-localStorage.setItem("musicScore",0);
-localStorage.setItem("modernArtScore",0)
-localStorage.setItem("codingScore",0);
+//add event listners to button
+musicButton.addEventListener("click",redicrectToMusicQuiz);
+modernArtButton.addEventListener("click",redicrectToModernArtQuiz);
+codingButton.addEventListener("click",redicrectToCodingQuiz);
 
+//check for if quiz is done or not, then diable button conditionally
+if(localStorage.getItem("musicScore")!=0 && localStorage.getItem("musicScore")!=null){
+    musicButton.classList.add("disabled");
+    musicButton.removeEventListener("click",redicrectToMusicQuiz);
+
+}
+if(localStorage.getItem("modernArtScore")!=0 && localStorage.getItem("modernArtScore")!=null){
+    modernArtButton.classList.add("disabled");
+    modernArtButton.removeEventListener("click",redicrectToMusicQuiz);
+
+}
+if(localStorage.getItem("codingScore")!=0 && localStorage.getItem("codingScore")!=null){
+    codingButton.classList.add("disabled");
+    codingButton.removeEventListener("click",redicrectToMusicQuiz);
+
+}
