@@ -12,4 +12,7 @@ if (import.meta.env.DEV) {
     .then((res) => (apiStatus.innerText = res.message));
 }
 
+localStorage.setItem("musicScore",0);
+localStorage.setItem("modernArtScore",0)
+localStorage.setItem("codingScore",0);
 
