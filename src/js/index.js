@@ -10,18 +10,18 @@ if (pageLoaded === null || pageLoaded === "index") {
   const scores = document.getElementById("scores");
 
   function renderMusicQuiz() {
-    localStorage.clear();
+    // localStorage.clear();
     localStorage.setItem("pageLoaded", "musicQuiz");
     console.log(localStorage);
     location.reload();
   }
   function renderModernArtQuiz() {
-    localStorage.clear();
+    // localStorage.clear();
     localStorage.setItem("pageLoaded", "modernArtQuiz");
     location.reload();
   }
   function renderCodingQuiz() {
-    localStorage.clear();
+    // localStorage.clear();
     localStorage.setItem("pageLoaded", "codingQuiz");
     location.reload();
   }
@@ -165,7 +165,9 @@ if (pageLoaded === null || pageLoaded === "index") {
           </svg>
           Home
         </button>
-      </div>`;
+      </div>
+      <div class="d-flex justify-content-center px-3" hidden id="ans"></div>
+      `;
   //aux array for helping display css correctly.
   const aux = [
     {
@@ -271,6 +273,7 @@ if (pageLoaded === null || pageLoaded === "index") {
 
     optionD.classList.remove("incorrect");
     optionD.classList.remove("correct");
+   
   }
 
   //load first question by default
@@ -319,13 +322,14 @@ if (pageLoaded === null || pageLoaded === "index") {
       optionB.innerText = questions[i].options[1];
       optionC.innerText = questions[i].options[2];
       optionD.innerText = questions[i].options[3];
-      if (aux[i].chosen == aux[i].correctOption) {
+      if (aux[i].chosen === aux[i].correctOption) {
         // console.log("yes");
         document.getElementById(aux[i].chosen).classList.add("correct");
       } else {
         // console.log("no");
         document.getElementById(aux[i].chosen).classList.add("incorrect");
         document.getElementById(aux[i].correctOption).classList.add("correct");
+    
       }
     } else {
       //display as a new question
@@ -358,6 +362,7 @@ if (pageLoaded === null || pageLoaded === "index") {
         if (item.correct === true) correctans++;
         else incorrectans++;
       }
+      removeCss();
       question.innerText = `Result Summary`;
       optionA.innerText = `Questions attempted: ${questionCompletedYet}`;
       optionB.innerText = `correct answers: ${correctans}`;
@@ -386,13 +391,15 @@ if (pageLoaded === null || pageLoaded === "index") {
         optionB.innerText = questions[i].options[1];
         optionC.innerText = questions[i].options[2];
         optionD.innerText = questions[i].options[3];
-        if (aux[i].chosen == aux[i].correctOption) {
+        if (aux[i].chosen === aux[i].correctOption) {
           // console.log("yes");
           document.getElementById(aux[i].chosen).classList.add("correct");
+         
         } else {
           // console.log("no");
           document.getElementById(aux[i].chosen).classList.add("incorrect");
           document.getElementById(aux[i].correctOption).classList.add("correct");
+        
         }
       } else {
         //display as a new question
@@ -411,6 +418,7 @@ if (pageLoaded === null || pageLoaded === "index") {
         } else if (optionD.innerText === aux[i].ans) {
           aux[i].correctOption = "optionD";
         }
+        
       }
     }
   }
@@ -427,12 +435,16 @@ if (pageLoaded === null || pageLoaded === "index") {
       if (e.target.nodeName === "SPAN") {
         aux[i].done = true; // mark question as done
         questionCompletedYet++;
+        
+
         if (e.target.innerText === aux[i].ans) {
           aux[i].correct = true;
           e.target.classList.add("correct");
+         
         } else {
           aux[i].correct = false;
           e.target.classList.add("incorrect");
+          
           document
             .getElementById(aux[i].correctOption)
             .classList.add("correct");
