@@ -1,0 +1,27 @@
+#center{
+  border: 5px solid green;
+  border-radius: 10px;
+  width: 50vw;
+  height: 80vh;
+  margin: auto;
+  margin-top: 10vh;
+}
+
+#question{
+  border: 2px solid darkgray;
+  border-radius: 5px;
+}
+.option{
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.correct{
+  border: 2px solid green;
+  border-radius: 5px;
+}
+
+.incorrect{
+  border: 2px solid red;
+  border-radius: 5px;
+}
