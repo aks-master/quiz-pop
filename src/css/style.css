@@ -1,3 +1,6 @@
+*{
+  font-size: 20px;;
+}
 #center{
   border: 5px solid green;
   border-radius: 10px;
@@ -5,6 +8,7 @@
   height: 80vh;
   margin: auto;
   margin-top: 10vh;
+  margin-bottom: 10vh;
 }
 
 #question{
@@ -24,4 +28,12 @@
 .incorrect{
   border: 2px solid red;
   border-radius: 5px;
+}
+@media screen and (max-width:760px){
+  #center{
+    width: 70vh;
+  }
+  *{
+    font-size: 15px;
+  }
 }
